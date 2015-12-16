@@ -6,11 +6,11 @@ then
   git config --global user.email "samccone@gmail.com" && \
   git config --global user.name "auto deployer" && \
   echo "Deploying!" && \
-  sed -i.tmp "s/\/\/ app.baseUrl = '\/polymer-starter-kit/app.baseUrl = '\/polymer-starter-kit/" app/scripts/app.js && \
+  sed -i.tmp "s/\/\/ app.baseUrl = '\/poly-vote/app.baseUrl = '\/poly-vote/" app/scripts/app.js && \
   rm app/scripts/app.js.tmp && \
   bower i && \
   gulp build-deploy-gh-pages && \
-  sed -i.tmp "s/app.baseUrl = '\/polymer-starter-kit/\/\/ app.baseUrl = '\/polymer-starter-kit/" app/scripts/app.js && \
+  sed -i.tmp "s/app.baseUrl = '\/poly-vote/\/\/ app.baseUrl = '\/poly-vote/" app/scripts/app.js && \
   rm app/scripts/app.js.tmp
 else
   npm run lint

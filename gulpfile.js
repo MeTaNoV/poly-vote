@@ -25,8 +25,6 @@ var packageJson = require('./package.json');
 var crypto = require('crypto');
 var ensureFiles = require('./tasks/ensure-files.js');
 
-// var ghPages = require('gulp-gh-pages');
-
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
   'ie_mob >= 10',
@@ -240,7 +238,7 @@ gulp.task('serve', ['lint', 'styles', 'elements', 'images'], function() {
   browserSync({
     port: 5000,
     notify: false,
-    logPrefix: 'PSK',
+    logPrefix: 'PV',
     snippetOptions: {
       rule: {
         match: '<span id="browser-sync-binding"></span>',
@@ -271,7 +269,7 @@ gulp.task('serve:dist', ['default'], function() {
   browserSync({
     port: 5001,
     notify: false,
-    logPrefix: 'PSK',
+    logPrefix: 'PV',
     snippetOptions: {
       rule: {
         match: '<span id="browser-sync-binding"></span>',
@@ -298,26 +296,6 @@ gulp.task('default', ['clean'], function(cb) {
     ['lint', 'images', 'fonts', 'html'],
     'vulcanize', // 'cache-config',
     cb);
-});
-
-// Build then deploy to GitHub pages gh-pages branch
-gulp.task('build-deploy-gh-pages', function(cb) {
-  runSequence(
-    'default',
-    'deploy-gh-pages',
-    cb);
-});
-
-// Deploy to GitHub pages gh-pages branch
-gulp.task('deploy-gh-pages', function() {
-  return gulp.src(dist('**/*'))
-    // Check if running task from Travis CI, if so run using GH_TOKEN
-    // otherwise run using ghPages defaults.
-    .pipe($.if(process.env.TRAVIS === 'true', $.ghPages({
-      remoteUrl: 'https://$GH_TOKEN@github.com/polymerelements/polymer-starter-kit.git',
-      silent: true,
-      branch: 'gh-pages'
-    }), $.ghPages()));
 });
 
 // Load tasks for web-component-tester

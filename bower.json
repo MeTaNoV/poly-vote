@@ -1,6 +1,6 @@
 {
-  "name": "polymer-starter-kit",
-  "private": true,
+  "name": "poly-vote",
+  "private": false,
   "dependencies": {
     "iron-elements": "PolymerElements/iron-elements#^1.0.0",
     "neon-elements": "PolymerElements/neon-elements#^1.0.0",
@@ -8,6 +8,7 @@
     "paper-elements": "PolymerElements/paper-elements#^1.0.1",
     "platinum-elements": "PolymerElements/platinum-elements#^1.1.0",
     "polymer": "Polymer/polymer#^1.2.0",
+    "firebase-element-extended": "MeTaNoV/firebase-element-extended#^1.0.0",
     "paper-menu": "PolymerElements/paper-menu#4fecb43601"
   },
   "devDependencies": {
