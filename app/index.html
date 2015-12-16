@@ -100,15 +100,32 @@
 
           <!-- Application name -->
           <div class="middle middle-container center horizontal layout">
-            <div class="app-name">Polymer Starter Kit</div>
+            <div class="app-name">Poly-Vote</div>
           </div>
 
           <!-- Application sub title -->
           <div class="bottom bottom-container center horizontal layout">
-            <div class="bottom-title paper-font-subhead">The future of the web today</div>
+            <div class="bottom-title paper-font-subhead">Make your voice heard!</div>
           </div>
 
         </paper-toolbar>
+
+        <firebase-auth-manager
+          location="https://poly-vote.firebaseio.com">
+        </firebase-auth-manager>
+
+        <firebase-auth-dialog entry-animation="scale-up-animation"
+                              exit-animation="fade-out-animation"
+                              providers='["facebook", "github", "google"]'
+                              modal>
+          <h2 title-sign-up>Sign-Up Dialog</h2>
+          <h2 title-sign-in>Sign-In Dialog</h2>
+          <b introduction>-- Welcome to the Firebase Element eXtended Demo: --</b>
+          <b provider>-- Sign-In with one of the following provider(s): --</b>
+          <b user>-- or provide your email and password : --</b>
+        </firebase-auth-dialog>
+
+        <firebase-state logged="{{logged}}" user="{{user}}"></firebase-state>
 
         <!-- Main Content -->
         <div class="content">
@@ -143,6 +160,19 @@
               <paper-material elevation="1">
                 <h2 class="page-title">User: {{params.name}}</h2>
                 <div>This is {{params.name}}'s section</div>
+
+                <div hidden$="{{!logged}}">
+                  <h2>Profile</h2>
+                  <firebase-profile-page profile="{{profile}}">
+                    <paper-material elevation="1">
+                      <h3>Additional Information</h3>
+                      <div id="container">
+                        <paper-input label="Information 1" value="{{profile.info1}}"></paper-input>
+                        <paper-input label="Information 2" value="{{profile.info2}}"></paper-input>
+                      </div>
+                    </paper-material>
+                  </firebase-profile-page>
+                </div>
               </paper-material>
             </section>
 
